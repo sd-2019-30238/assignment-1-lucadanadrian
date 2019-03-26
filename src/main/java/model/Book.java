@@ -88,14 +88,13 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "Id=" + Id +
-                ", title='" + title + '\'' +
+        return "Book: " +
+//                "Id=" + Id +
+                " title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", genre='" + genre + '\'' +
                 ", releaseDate='" + releaseDate + '\'' +
                 ", price=" + price +
-                ", numberOfBooks=" + numberOfBooks +
-                '}'+'\n';
+                ", numberOfBooks=" + numberOfBooks +'\n';
     }
 }

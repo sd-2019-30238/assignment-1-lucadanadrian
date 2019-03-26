@@ -48,12 +48,12 @@
           <text value="LogIn as Staff"/>
         </properties>
       </component>
-      <component id="fd955" class="javax.swing.JButton" binding="logInButton" default-binding="true">
+      <component id="fd955" class="javax.swing.JButton" binding="logInAsUserButton" default-binding="true">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="LogIn"/>
+          <text value="LogIn as User"/>
         </properties>
       </component>
       <component id="59823" class="javax.swing.JButton" binding="createAccountButton" default-binding="true">

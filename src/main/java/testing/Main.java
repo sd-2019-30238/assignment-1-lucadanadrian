@@ -23,7 +23,7 @@ public class Main {
         StaffDAO staff=appContext.getBean("staffDAO", StaffDAO.class);
         OrderDAO orders =appContext.getBean("orderDAO",OrderDAO.class);
 
-//        users.insertTable(new User(1,"user@email1","nume1","prenume1","pass1"));
+//        users.insertTable(new User(4,"user@email1","nume1","prenume1","asd"));
 //        users.insertTable(new User(2,"user@email2","nume2","prenume2","pass2"));
 //        users.insertTable(new User(3,"user@email3","nume3","prenume3","pass3"));
 
@@ -52,11 +52,11 @@ public class Main {
 //        System.out.println(staff.selectAll());
 
 //        orders.deleteOrder(3);
-//        users.deleteFromTable(3);
+//        users.deleteFromTable(7);
 //        staff.deleteStaff(3);
-//        book.deleteFromTable(3);
+        book.deleteFromTable(4);
 
-        System.out.println(orders.selecOrders());
+//        System.out.println(orders.selecOrders());
 
     }
 }

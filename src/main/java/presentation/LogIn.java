@@ -9,7 +9,7 @@ public class LogIn extends JFrame{
     static CreateAccount createAccount = new CreateAccount();
     private JTextField textField3;
     private JPasswordField passwordField1;
-    private JButton logInButton;
+    private JButton logInAsUserButton;
     private JButton logInAsStaffButton;
     private JPanel panelMain;
     private JButton createAccountButton;

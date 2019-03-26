@@ -1,5 +1,8 @@
 package model;
 
+
+import com.sun.istack.internal.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +18,7 @@ public class User {
     private String lastName;
     @Column(name="user_firstname")
     private String firstName;
+    @NotNull
     @Column(name="user_pass")
     private String password;
 
