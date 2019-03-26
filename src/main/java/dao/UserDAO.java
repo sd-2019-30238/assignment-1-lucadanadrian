@@ -19,7 +19,7 @@ public class UserDAO {
     }
 
     public List<User> selectAll(){
-        return sessionFactory.getCurrentSession().createSQLQuery("Select * from user").list();
+        return (List<User>) sessionFactory.getCurrentSession().createSQLQuery("Select * from user").addEntity(User.class).list();
     }
 
     public void insertTable(User user){
@@ -31,7 +31,7 @@ public class UserDAO {
     }
 
     public void deleteFromTable(int id){
-        sessionFactory.getCurrentSession().createSQLQuery("Delete from user where id = :id")
+        sessionFactory.getCurrentSession().createSQLQuery("Delete from user where user_id = :id")
                 .setParameter("id",id).executeUpdate();
     }
 }

@@ -1,32 +1,37 @@
 package model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table
 public class Book {
     @Id
+    @Column(name="book_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-    @Column
+    @Column(name="book_title")
     private String title;
-    @Column
+    @Column(name="book_author")
     private String author;
-    @Column
+    @Column(name="book_genre")
     private String genre;
-    @Column
-    private Date releaseDate;
-    @Column
+    @Column(name="book_releasedate")
+    private String releaseDate;
+    @Column(name="book_price")
     private int price;
+    @Column(name="book_number")
+    private int numberOfBooks;
 
-    public Book(int id, String title, String author, String genre, Date releaseDate, int price) {
+    public Book(){}
+
+    public Book(int id, String title, String author, String genre, String releaseDate, int price, int numberOfBooks) {
         Id = id;
         this.title = title;
         this.author = author;
         this.genre = genre;
         this.releaseDate = releaseDate;
         this.price = price;
+        this.numberOfBooks=numberOfBooks;
     }
 
     public int getId(){ return Id; }
@@ -57,11 +62,11 @@ public class Book {
         this.genre = genre;
     }
 
-    public Date getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -73,6 +78,14 @@ public class Book {
         this.price = price;
     }
 
+    public int getNumberOfBooks(){
+        return numberOfBooks;
+    }
+
+    public void setNumberOfBooks(int numberOfBooks){
+        this.numberOfBooks = numberOfBooks;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -80,8 +93,9 @@ public class Book {
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", genre='" + genre + '\'' +
-                ", releaseDate=" + releaseDate +
+                ", releaseDate='" + releaseDate + '\'' +
                 ", price=" + price +
-                '}';
+                ", numberOfBooks=" + numberOfBooks +
+                '}'+'\n';
     }
 }

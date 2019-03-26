@@ -6,16 +6,19 @@ import javax.persistence.*;
 @Table
 public class User {
     @Id
+    @Column(name="user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-    @Column
+    @Column(name="user_email")
     private String email;
-    @Column
+    @Column(name="user_lastname")
     private String lastName;
-    @Column
+    @Column(name="user_firstname")
     private String firstName;
-    @Column
+    @Column(name="user_pass")
     private String password;
+
+    public User(){}
 
     public User(int id, String email, String lastName, String firstName, String password) {
         Id = id;
@@ -72,6 +75,6 @@ public class User {
                 ", email='" + email + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
-                '}';
+                '}'+'\n';
     }
 }

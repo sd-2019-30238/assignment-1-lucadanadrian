@@ -14,23 +14,24 @@ public class BookDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public Book selectById(int id){
+    public Book selectById(int id) {
         return sessionFactory.getCurrentSession().get(Book.class, id);
     }
 
-    public List<Book> selectAll(){
-        return sessionFactory.getCurrentSession().createSQLQuery("Select * from book").list();
+    public List<Book> selectAll() {
+        return (List<Book>) sessionFactory.getCurrentSession().createSQLQuery("Select * from book").addEntity(Book.class).list();
     }
-    public void insertTable(Book book){
+
+    public void insertTable(Book book) {
         sessionFactory.getCurrentSession().save(book);
     }
 
-    public void updateTable(Book book){
+    public void updateTable(Book book) {
         sessionFactory.getCurrentSession().saveOrUpdate(book);
     }
 
-    public void deleteFromTable(int id){
-        sessionFactory.getCurrentSession().createSQLQuery("Delete From book where id = :id")
-                .setParameter("id",id).executeUpdate();
+    public void deleteFromTable(int id) {
+        sessionFactory.getCurrentSession().createSQLQuery("Delete From book where book_id = :id")
+                .setParameter("id", id).executeUpdate();
     }
 }
