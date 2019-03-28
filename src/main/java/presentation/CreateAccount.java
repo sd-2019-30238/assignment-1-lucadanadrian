@@ -63,11 +63,13 @@ public class CreateAccount extends JFrame{
 
     protected void createAccount(ActionEvent e){
         ApplicationContext applicationContext= new AnnotationConfigApplicationContext(Connection.class);
-//        UserDAO users = applicationContext.getBean("userDAO", UserDAO.class);
-        StaffDAO staff = applicationContext.getBean("staffDAO", StaffDAO.class);
+        UserDAO users = applicationContext.getBean("userDAO", UserDAO.class);
+//        StaffDAO staff = applicationContext.getBean("staffDAO", StaffDAO.class);
 
-//        users.insertTable(new User(4,textField1.getText(),textField3.getText(),textField2.getText(),passwordField1.getPassword(),Integer.parseInt(comboBox1.getSelectedItem().toString())));
+        users.insertTable(new User(4,textField1.getText(),textField3.getText(),textField2.getText(),passwordField1.getPassword(),Integer.parseInt(comboBox1.getSelectedItem().toString())));
+//
 //        staff.insertStaff(new Staff(1,textField1.getText(),passwordField1.getPassword()));
+
         //        System.out.println(textField1.getText());
 //        System.out.println(passwordField1.getPassword());
 //        System.out.println(textField2.getText());

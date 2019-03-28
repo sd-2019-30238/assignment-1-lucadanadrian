@@ -30,6 +30,7 @@ public class BookManagement extends JFrame{
     private JButton logOutButton;
     ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Connection.class);
     BookDAO book = applicationContext.getBean("bookDAO", BookDAO.class);
+
     public BookManagement(){
         setTitle("BookManagement");
         setContentPane(panel);
