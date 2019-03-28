@@ -12,11 +12,11 @@ public class Staff {
     @Column(name="staff_email", unique = true, nullable = false)
     private String email;
     @Column(name="staff_pass", nullable = false)
-    private String password;
+    private char[] password;
 
     public Staff(){}
 
-    public Staff(int id, String email, String password) {
+    public Staff(int id, String email, char[] password) {
         Id = id;
         this.email = email;
         this.password = password;
@@ -38,11 +38,11 @@ public class Staff {
         this.email = email;
     }
 
-    public String getPassword() {
+    public char[] getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(char[] password) {
         this.password = password;
     }
 

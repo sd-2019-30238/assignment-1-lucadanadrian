@@ -19,13 +19,13 @@ public class User {
     @Column(name="user_firstname", nullable = false)
     private String firstName;
     @Column(name="user_pass",nullable = false)
-    private String password;
+    private char[] password;
     @Column(name ="user_months",nullable = false)
     private int subscrtionMonths;
 
     public User(){}
 
-    public User(int id, String email, String lastName, String firstName, String password, int subscrtionMonths) {
+    public User(int id, String email, String lastName, String firstName, char[] password, int subscrtionMonths) {
         Id = id;
         this.email = email;
         this.lastName = lastName;
@@ -66,11 +66,11 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
+    public char[] getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(char[] password) {
         this.password = password;
     }
 

@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class BookManagement extends JFrame{
+    static LogIn logIn = new LogIn();
     private JPanel panel;
     private JComboBox comboBox1;
     private JTextArea textArea1;
@@ -26,6 +27,7 @@ public class BookManagement extends JFrame{
     private JTextField yearField;
     private JTextField priceField;
     private JTextField numberOfBooksField;
+    private JButton logOutButton;
     ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Connection.class);
     BookDAO book = applicationContext.getBean("bookDAO", BookDAO.class);
     public BookManagement(){
@@ -72,6 +74,17 @@ public class BookManagement extends JFrame{
                 numberOfBooksField.setText("");
             }
         });
+        logOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                goToLogOut(e);
+            }
+        });
+    }
+
+    protected void goToLogOut(ActionEvent e){
+        this.setVisible(false);
+        logIn.setVisible(true);
     }
 
     protected void selectFilter(ActionEvent e){
