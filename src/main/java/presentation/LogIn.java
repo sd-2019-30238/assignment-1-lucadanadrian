@@ -70,7 +70,6 @@ public class LogIn extends JFrame{
                     wrongLabel.setText("");
                     this.setVisible(false);
                     bookManagement.setVisible(true);
-//                    System.out.println("DADA");
                 }else{
                     wrongLabel.setText("*Wrong staff account*");
                 }
@@ -78,13 +77,11 @@ public class LogIn extends JFrame{
     }
 
     protected void goToBookStore(ActionEvent e){
-//        System.out.println(passwordField1.getPassword());
-
         for(User u: user.selectAll()){
             if (u.getEmail().equals(emailField.getText()) && Arrays.equals(u.getPassword(),passwordField1.getPassword())){
-//                System.out.println("1123");
                 this.setVisible(false);
                 bookStore.setVisible(true);
+                bookStore.setClientEmail(emailField.getText());
             }else{
                 wrongLabel.setText("*Email or Password incorrect!*");
             }

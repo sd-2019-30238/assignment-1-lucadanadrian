@@ -40,9 +40,9 @@ public class Main {
 //
 //        System.out.println(book.selectByDate(2017));
 
-        System.out.println(book.selectByAuthor("author1"));
-        System.out.println(book.selectByTitle("titlu2"));
-        System.out.println(book.selectByGenre("gen3"));
+//        System.out.println(book.selectByAuthor("author1"));
+//        System.out.println(book.selectByTitle("titlu2"));
+//        System.out.println(book.selectByGenre("gen3"));
 //        staff.insertStaff(new Staff(1,"email1","pass1"));
 //        staff.insertStaff(new Staff(2,"email2","pass2"));
 //        staff.insertStaff(new Staff(3,"email3","pass3"));
