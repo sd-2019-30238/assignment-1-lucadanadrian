@@ -12,24 +12,26 @@ public class User {
     @Column(name="user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-    @Column(name="user_email")
+    @Column(name="user_email",unique = true, nullable = false)
     private String email;
-    @Column(name="user_lastname")
+    @Column(name="user_lastname", nullable = false)
     private String lastName;
-    @Column(name="user_firstname")
+    @Column(name="user_firstname", nullable = false)
     private String firstName;
-    @NotNull
-    @Column(name="user_pass")
+    @Column(name="user_pass",nullable = false)
     private String password;
+    @Column(name ="user_months",nullable = false)
+    private int subscrtionMonths;
 
     public User(){}
 
-    public User(int id, String email, String lastName, String firstName, String password) {
+    public User(int id, String email, String lastName, String firstName, String password, int subscrtionMonths) {
         Id = id;
         this.email = email;
         this.lastName = lastName;
         this.firstName = firstName;
         this.password = password;
+        this.subscrtionMonths=subscrtionMonths;
     }
 
     public int getId(){
@@ -70,6 +72,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getSubscrtionMonths() {
+        return subscrtionMonths;
+    }
+
+    public void setSubscrtionMonths(int subscrtionMonths) {
+        this.subscrtionMonths = subscrtionMonths;
     }
 
     @Override

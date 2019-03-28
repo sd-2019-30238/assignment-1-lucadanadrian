@@ -18,6 +18,22 @@ public class BookDAO {
         return sessionFactory.getCurrentSession().get(Book.class, id);
     }
 
+    public List<Book> selectByDate(int year){
+        return sessionFactory.getCurrentSession().createSQLQuery("Select * from book where book_releaseyear = " + year).addEntity(Book.class).list();
+    }
+
+    public List<Book> selectByAuthor(String author){
+        return sessionFactory.getCurrentSession().createSQLQuery("Select * from book where book_author = '" + author+"'").addEntity(Book.class).list();
+    }
+
+    public List<Book> selectByTitle(String title){
+        return  sessionFactory.getCurrentSession().createSQLQuery("Select * from book where book_title ='" +title +"'").addEntity(Book.class).list();
+    }
+
+    public List<Book> selectByGenre(String genre){
+        return sessionFactory.getCurrentSession().createSQLQuery("Select * from book where book_genre = '"+genre+"'").addEntity(Book.class).list();
+    }
+
     public List<Book> selectAll() {
         return (List<Book>) sessionFactory.getCurrentSession().createSQLQuery("Select * from book").addEntity(Book.class).list();
     }

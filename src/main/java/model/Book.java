@@ -9,22 +9,22 @@ public class Book {
     @Column(name="book_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-    @Column(name="book_title")
+    @Column(name="book_title", nullable = false)
     private String title;
-    @Column(name="book_author")
+    @Column(name="book_author", nullable = false)
     private String author;
     @Column(name="book_genre")
     private String genre;
-    @Column(name="book_releasedate")
-    private String releaseDate;
-    @Column(name="book_price")
+    @Column(name="book_releaseyear")
+    private int releaseDate;
+    @Column(name="book_price", nullable = false)
     private int price;
-    @Column(name="book_number")
+    @Column(name="book_quantity", nullable = false)
     private int numberOfBooks;
 
     public Book(){}
 
-    public Book(int id, String title, String author, String genre, String releaseDate, int price, int numberOfBooks) {
+    public Book(int id, String title, String author, String genre, int releaseDate, int price, int numberOfBooks) {
         Id = id;
         this.title = title;
         this.author = author;
@@ -62,11 +62,11 @@ public class Book {
         this.genre = genre;
     }
 
-    public String getReleaseDate() {
+    public int getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(String releaseDate) {
+    public void setReleaseDate(int releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -89,12 +89,12 @@ public class Book {
     @Override
     public String toString() {
         return "Book: " +
-//                "Id=" + Id +
-                " title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                ", genre='" + genre + '\'' +
-                ", releaseDate='" + releaseDate + '\'' +
-                ", price=" + price +
-                ", numberOfBooks=" + numberOfBooks +'\n';
+                "Id=" + Id +
+                " Title= " + title +
+                ", Author= " + author +
+                ", Genre= " + genre +
+                ", Release Year= " + releaseDate +
+                ", Price=" + price +
+                ", Number Of Books=" + numberOfBooks +'\n';
     }
 }

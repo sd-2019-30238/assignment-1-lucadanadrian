@@ -9,9 +9,9 @@ public class Staff {
     @Column(name="staff_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-    @Column(name="staff_email")
+    @Column(name="staff_email", unique = true, nullable = false)
     private String email;
-    @Column(name="staff_pass")
+    @Column(name="staff_pass", nullable = false)
     private String password;
 
     public Staff(){}
