@@ -1,8 +1,11 @@
 package presentation;
 
+import bll.BookBLL;
 import connection.Connection;
 import dao.BookDAO;
+import dao.UserDAO;
 import model.Book;
+import model.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -28,8 +31,10 @@ public class BookManagement extends JFrame{
     private JTextField priceField;
     private JTextField numberOfBooksField;
     private JButton logOutButton;
-    ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Connection.class);
-    BookDAO book = applicationContext.getBean("bookDAO", BookDAO.class);
+    private JButton showUsersButton;
+//    ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Connection.class);
+//    BookDAO book = applicationContext.getBean("bookDAO", BookDAO.class);
+    BookBLL books = new BookBLL();
 
     public BookManagement(){
         setTitle("BookManagement");
@@ -52,14 +57,14 @@ public class BookManagement extends JFrame{
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                book.deleteFromTable(Integer.parseInt(textField2.getText()));
+                books.deleteBook(Integer.parseInt(textField2.getText()));
                 textField2.setText("");
             }
         });
         insertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                book.insertTable(new Book(1,
+                books.insertBook(new Book(1,
                         titleField.getText(),
                         authorField.getText(),
                         genreField.getText(),
@@ -81,6 +86,18 @@ public class BookManagement extends JFrame{
                 goToLogOut(e);
             }
         });
+        showUsersButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ApplicationContext appContext = new AnnotationConfigApplicationContext(Connection.class);
+                UserDAO users= appContext.getBean("userDAO",UserDAO.class);
+                String text="";
+                for(User u: users.selectAll()){
+                    text += u.getId() + " " +u.getEmail()+ " "+ u.getLastName()+ " "+u.getFirstName() + "\n";
+                }
+                textArea1.setText(text);
+            }
+        });
     }
 
     protected void goToLogOut(ActionEvent e){
@@ -91,21 +108,25 @@ public class BookManagement extends JFrame{
     protected void selectFilter(ActionEvent e){
 //        System.out.println(comboBox1.getSelectedItem().toString());
         if(comboBox1.getSelectedItem().toString().equals("Author")){
-            textArea1.setText(book.selectByAuthor(textField1.getText().toLowerCase()).toString());
+            textArea1.setText(books.selectBookByAuthor(textField1.getText().toLowerCase()).toString());
         }
         if(comboBox1.getSelectedItem().toString().equals("Title")){
-            textArea1.setText(book.selectByTitle(textField1.getText().toLowerCase()).toString());
+            textArea1.setText(books.selectBookByTitle(textField1.getText().toLowerCase()).toString());
         }
         if(comboBox1.getSelectedItem().toString().equals("Genre")){
-            textArea1.setText(book.selectByGenre(textField1.getText().toLowerCase()).toString());
+            textArea1.setText(books.selectBookByGenre(textField1.getText().toLowerCase()).toString());
         }
         if(comboBox1.getSelectedItem().toString().equals("Release Year")){
-            textArea1.setText(book.selectByDate(Integer.parseInt(textField1.getText())).toString());
+            textArea1.setText(books.selectBookByYear(Integer.parseInt(textField1.getText())).toString());
         }
     }
 
     protected void showAllBooks(ActionEvent e){
-        textArea1.setText(book.selectAll().toString());
+        String text="";
+        for(Book b : books.selectAllBooks()){
+            text +=b.toString();
+        }
+        textArea1.setText(text);
     }
 
     public static void main(String[] args){

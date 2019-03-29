@@ -1,12 +1,9 @@
 package presentation;
 
+import bll.UserBLL;
 import connection.Connection;
-import dao.StaffDAO;
-import dao.UserDAO;
 import model.Staff;
 import model.User;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,6 +21,7 @@ public class CreateAccount extends JFrame{
     private JButton backToLogInButton;
     private JComboBox comboBox1;
     private JTextField sumTextArea;
+    UserBLL users = new UserBLL();
 
 
     public CreateAccount() {
@@ -62,21 +60,7 @@ public class CreateAccount extends JFrame{
     }
 
     protected void createAccount(ActionEvent e){
-        ApplicationContext applicationContext= new AnnotationConfigApplicationContext(Connection.class);
-        UserDAO users = applicationContext.getBean("userDAO", UserDAO.class);
-//        StaffDAO staff = applicationContext.getBean("staffDAO", StaffDAO.class);
-
-        users.insertTable(new User(4,textField1.getText(),textField3.getText(),textField2.getText(),passwordField1.getPassword(),Integer.parseInt(comboBox1.getSelectedItem().toString())));
-//
-//        staff.insertStaff(new Staff(1,textField1.getText(),passwordField1.getPassword()));
-
-        //        System.out.println(textField1.getText());
-//        System.out.println(passwordField1.getPassword());
-//        System.out.println(textField2.getText());
-//        System.out.println(textField3.getText());
-//          this.setVisible(false);
-//        System.out.println(Integer.parseInt(comboBox1.getSelectedItem().toString()));
-
+        users.insertUser(new User(4,textField1.getText(),textField3.getText(),textField2.getText(),passwordField1.getPassword(),Integer.parseInt(comboBox1.getSelectedItem().toString())));
     }
 
     public static void main(String[] args) {

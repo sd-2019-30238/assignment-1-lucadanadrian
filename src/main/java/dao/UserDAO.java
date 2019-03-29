@@ -14,7 +14,7 @@ public class UserDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public User selectById(int id){
+    public  User selectById(int id){
         return sessionFactory.getCurrentSession().get(User.class, id);
     }
 
