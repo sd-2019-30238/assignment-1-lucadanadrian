@@ -1,5 +1,7 @@
 package presentation;
 
+import Factory.RecommendationFactory;
+import Factory.Recommendations;
 import Factory.Trends;
 import bll.BookBLL;
 import bll.UserBLL;
@@ -29,11 +31,9 @@ public class BookStore extends JFrame {
     private JTextField returnBookField;
     private JButton returnButton;
     private JLabel actionMessage;
-    private JButton newestBookButton;
+    private JComboBox comboBox1;
     private String clientEmail;
-//    ApplicationContext appContext = new AnnotationConfigApplicationContext(Connection.class);
-//    UserDAO users = appContext.getBean("userDAO", UserDAO.class);
-//    BookDAO book = appContext.getBean("bookDAO", BookDAO.class);
+
     UserBLL users = new UserBLL();
     BookBLL books = new BookBLL();
     Map<String, Integer> bookMap = new HashMap<String, Integer>();
@@ -124,11 +124,13 @@ public class BookStore extends JFrame {
             }
 
         });
-        newestBookButton.addActionListener(new ActionListener() {
+
+        comboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Trends newestBook= new Trends();
-                textArea1.setText(newestBook.getRecommendtation().toString());
+                RecommendationFactory recommendation = new RecommendationFactory();
+                Recommendations aRecommendation = recommendation.makeRecommendations(comboBox1.getSelectedItem().toString());
+                textArea1.setText(aRecommendation.getRecommendtation().toString());
             }
         });
     }

@@ -25,7 +25,6 @@ public class BookBLL {
     public List<Book> selectBookByAuthor(String author){
         return books.selectByAuthor(author);
     }
-
     public List<Book> selectBookByTitle(String title){
         return books.selectByTitle(title);
     }
@@ -35,6 +34,10 @@ public class BookBLL {
     public List<Book> selectBookByGenre(String genre){
         return books.selectByGenre(genre);
     }
+    public List<Book> selectBooksByNumber(int number){
+        return books.selectByNumberOfBooks(number);
+    }
+
     public void insertBook(Book book){
         books.insertTable(book);
     }

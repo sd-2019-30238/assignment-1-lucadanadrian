@@ -5,5 +5,5 @@ import model.Book;
 import java.util.List;
 
 public interface Recommendations {
-    Book getRecommendtation();
+    List<Book> getRecommendtation();
 }

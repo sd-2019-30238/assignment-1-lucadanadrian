@@ -22,6 +22,10 @@ public class BookDAO {
         return sessionFactory.getCurrentSession().createSQLQuery("Select * from book where book_releaseyear = " + year).addEntity(Book.class).list();
     }
 
+    public List<Book> selectByNumberOfBooks(int numberOfBooks){
+        return sessionFactory.getCurrentSession().createSQLQuery("select * from book where book_quantity =" + numberOfBooks).addEntity(Book.class).list();
+    }
+
     public List<Book> selectByAuthor(String author){
         return sessionFactory.getCurrentSession().createSQLQuery("Select * from book where book_author = '" + author+"'").addEntity(Book.class).list();
     }
