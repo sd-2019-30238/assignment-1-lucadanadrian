@@ -1,0 +1,27 @@
+package com.assignment2.demo;
+
+import com.assignment2.demo.connection.Connection;
+import com.assignment2.demo.dao.UserDAO;
+import com.assignment2.demo.model.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+
+//@SpringBootApplication
+public class DemoApplication {
+
+//    public static void main(String[] args) {
+//        SpringApplication.run(DemoApplication.class, args);
+//        User user= new User("email","name","first","pass",0);
+//        System.out.println(user.getEmail());
+//    }
+    public static void main(String[] args) {
+        ApplicationContext appContext = new AnnotationConfigApplicationContext(Connection.class);
+        UserDAO users= appContext.getBean("userDAO", UserDAO.class);
+        users.insertTable(new User("user@email565","nume1","prenume1","asd",0));
+
+//        User user= new User("email","name","first","pass",0);
+//        System.out.println(user.getEmail());
+    }
+
+}
