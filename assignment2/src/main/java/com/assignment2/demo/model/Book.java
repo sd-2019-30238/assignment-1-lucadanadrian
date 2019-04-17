@@ -34,6 +34,15 @@ public class Book {
         this.numberOfBooks=numberOfBooks;
     }
 
+    public Book(String title, String author, String genre, int releaseDate, int price, int numberOfBooks) {
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.releaseDate = releaseDate;
+        this.price = price;
+        this.numberOfBooks=numberOfBooks;
+    }
+
     public int getId(){ return Id; }
 
     public void setId(int id){ Id = id; }

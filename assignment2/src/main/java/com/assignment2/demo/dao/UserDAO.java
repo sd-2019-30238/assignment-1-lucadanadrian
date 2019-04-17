@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@Transactional
+
 @Component
 public class UserDAO {
     @Autowired
