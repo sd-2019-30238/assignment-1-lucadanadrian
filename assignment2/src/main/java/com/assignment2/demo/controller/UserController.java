@@ -4,6 +4,7 @@ import com.assignment2.demo.model.User;
 import com.assignment2.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ public class UserController {
 
     @PostMapping("/signUp")
     public ModelAndView addUser(User user){
-        ModelAndView modelAndView = new ModelAndView("mainMenu");
+        ModelAndView modelAndView = new ModelAndView("loginPage");
         userService.addUser(user);
         return modelAndView;
     }
@@ -27,4 +28,16 @@ public class UserController {
         modelAndView.addObject("user",new User());
         return modelAndView;
     }
+
+    @GetMapping("/users")
+    public ModelAndView displayAllUsers(){
+        ModelAndView modelAndView = new ModelAndView("seeAllUsers");
+        modelAndView.addObject("users",userService.seeAllUsers());
+        return modelAndView;
+    }
+
+//    @DeleteMapping("/users")
+//    public ModelAndView deleteUser(){
+//        ModelAndView modelAndView = new ModelAndView("seeAllUsers");
+//    }
 }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+</head>
+<body>
+<h2 align="center">All Users</h2>
+
+<table align="center" border="1">
+    <tr bgcolor="#ff7f50">
+        <td >User ID</td>
+        <td>User Email</td>
+        <td>Last Name</td>
+        <td>First Name</td>
+        <td>Subscription:</td>
+        <td>Accepted:</td>>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.getId()}"></td>
+        <td th:text="${user.getEmail()}"></td>
+        <td th:text="${user.getLastName()}"></td>
+        <td th:text="${user.getFirstName()}"></td>
+        <td th:text="${user.getSubscriptionMonths()}"></td>
+        <td th:text="${user.getSubscribed()}"></td>
+    </tr>
+</table>
+
+<br>
+<table align="center">
+    <tr>
+        <td> Accept user with ID:</td>
+        <td><input type = "text" name="id" placeholder="User ID"></td>
+        <td><input type="submit" value="Accept"></td>
+    </tr>
+    <tr>
+        <td>Delete User wiwth ID:</td>
+        <td><input type = "text" name="id" placeholder="User ID"></td>
+        <td><input type="submit" value="Delete"></td>
+    </tr>
+</table>
+
+<!--<p align="center">-->
+<!--    Accept user with ID: <input type = "text" name="id" placeholder="User ID"> <input type="submit" value="Accept">-->
+<!--</p>-->
+
+<p align="center">
+    <button type="button"><a href="/books">Library</a></button>
+</p>
+<p align="center">
+    <button type="button"><a href="/addBook">Insert Book</a></button>
+</p>
+</body>
+</html>

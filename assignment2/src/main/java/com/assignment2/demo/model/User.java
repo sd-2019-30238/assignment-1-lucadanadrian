@@ -19,16 +19,27 @@ public class User {
     private String password;
     @Column(name = "user_months", nullable = false)
     private int subscriptionMonths;
+    @Column(name= "user_accept")
+    private String subscribed;
 
     public User() {
     }
 
-    public User(String email, String lastName, String firstName, String password, int subscriptionMonths) {
+    public User(String email, String lastName, String firstName, String password, int subscriptionMonths, String subscribed) {
         this.email = email;
         this.lastName = lastName;
         this.firstName = firstName;
         this.password = password;
         this.subscriptionMonths = subscriptionMonths;
+        this.subscribed = subscribed;
+    }
+
+    public void setSubscribed(String subscribed) {
+        this.subscribed = subscribed;
+    }
+
+    public String getSubscribed() {
+        return subscribed;
     }
 
     public int getId() {

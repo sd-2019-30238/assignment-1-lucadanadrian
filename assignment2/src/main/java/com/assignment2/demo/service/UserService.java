@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Transactional
 @Service
@@ -15,5 +16,13 @@ public class UserService {
 
     public void addUser(User user) {
         userDAO.insertTable(user);
+    }
+
+    public List<User> seeAllUsers(){
+        return userDAO.selectAll();
+    }
+
+    public void deleteUser(int id){
+        userDAO.deleteFromTable(id);
     }
 }

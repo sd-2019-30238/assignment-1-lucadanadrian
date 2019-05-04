@@ -6,7 +6,7 @@
     <title>InsertBook</title>
 </head>
 <body>
-
+<h2 align="center">All Books</h2>
 <form action="#" th:action="@{/addBook}" th:object="${book}" method="post">
 
     <table align="center">
@@ -41,7 +41,7 @@
         <tr align="center">
             <td></td>
             <td>
-                <a href="/home">Back</a>
+                <button type="button"><a href="/books">See All books</a> </button>
             </td>
         </tr>
     </table>
