@@ -24,6 +24,12 @@
         <td th:text="${book.releaseDate}"></td>
         <td th:text="${book.price}"></td>
         <td th:text="${book.numberOfBooks}"></td>
+        <td>
+            <form action="#" th:action="@{/books/{id} (id=${book.id})}" th:method="delete">
+                <input type="hidden" name="_method" value="delete"/>
+                <input type="submit" value="Delete">
+            </form>
+        </td>
     </tr>
     <!--        <tr th:each="book : ${books}">-->
     <!--            <form action="#" th:action="@{/books/{id}(id=${book.id})}" th:method="delete">-->
@@ -36,32 +42,42 @@
 <!--</form>-->
 
 <br>
+<!--<form action="#" th:action="@{/books/author}" th:method="get">-->
+<!--    Select books with author:-->
+<!--    <input type="text" name="author" placeholder="Author">-->
+
+<!--    <input type="submit" value="Select">-->
+<!--</form>-->
+
 
 <table align="center">
     <tr>
-        <td>Delete book with ID: </td>
-        <td><input type="text" placeholder="ID"></td>
-        <td> <input type="submit" value="Delete"></td>
+        <form action="#" th:action="@{/books/author}" th:method="get">
+            <td> Select books with author:</td>
+            <td><input type="text" name="author" placeholder="Author"></td>
+            <td><input type="submit" value="Select"></td>
+        </form>
     </tr>
     <tr>
-        <td>Select books with author: </td>
-        <td><input type="text" placeholder="Author"></td>
-        <td><input type="submit" value="Select"> </td>
+        <form action="#" th:action="@{/books/title}" th:method="get">
+            <td>Select books with title:</td>
+            <td><input type="text" name="title" placeholder="Title"></td>
+            <td><input type="submit" value="Select"></td>
+        </form>
     </tr>
     <tr>
-        <td>Select books with title: </td>
-        <td><input type="text" placeholder="Title"></td>
-        <td> <input type="submit" value="Select"> </td>
+        <form action="#" th:action="@{/books/genre}" th:method="get">
+            <td>Select books with genre:</td>
+            <td><input type="text" name="genre" placeholder="Genre"></td>
+            <td><input type="submit" value="Select"></td>
+        </form>
     </tr>
     <tr>
-        <td>Select books with genre:</td>
-        <td><input type="text" placeholder="Genre"></td>
-        <td><input type="submit" value="Select"></td>
-    </tr>
-    <tr>
-        <td>Select books with date:</td>
-        <td><input type="text" placeholder="Release Date"></td>
-        <td><input type="submit" value="Select"></td>
+        <form action="#" th:action="@{/books/year}" th:method="get">
+            <td>Select books with date:</td>
+            <td><input type="number" name="year" placeholder="Release Date"></td>
+            <td><input type="submit" value="Select"></td>
+        </form>
     </tr>
 </table>
 
