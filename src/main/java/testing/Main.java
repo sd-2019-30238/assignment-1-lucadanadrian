@@ -23,7 +23,10 @@ public class Main {
         StaffDAO staff=appContext.getBean("staffDAO", StaffDAO.class);
         OrderDAO orders =appContext.getBean("orderDAO",OrderDAO.class);
 
-//        users.insertTable(new User(1,"user@email5656","nume1","prenume1","asd",0));
+        User u = new User(1,"user@email5656","nume1","prenume1","123".toCharArray(),0);
+        u.setFirstName("gegeeeee");
+        users.updateTable(u);
+        //        users.insertTable(new User(1,"user@email5656","nume1","prenume1","asd",0));
 //        users.insertTable(new User(2,"user@email2","nume2","prenume2","pass2",0));
 //        users.insertTable(new User(3,"user@email3","nume3","prenume3","pass3",0));
 

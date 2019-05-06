@@ -25,4 +25,10 @@ public class UserService {
     public void deleteUser(int id){
         userDAO.deleteFromTable(id);
     }
+
+    public void accpetUser(int id){
+        User user = userDAO.selectById(id);
+        user.setSubscribed("subbed");
+        userDAO.updateTable(user);
+    }
 }
