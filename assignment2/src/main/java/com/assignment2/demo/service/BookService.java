@@ -41,4 +41,15 @@ public class BookService {
     public void deleteBook(int id){
         bookDAO.deleteFromTable(id);
     }
+
+    public void orderBook(int id){
+        Book book = bookDAO.selectById(id);
+        if(book.getNumberOfBooks()>0) {
+            book.setNumberOfBooks(book.getNumberOfBooks()-1);
+            bookDAO.updateTable(book);
+        }else{
+            book.setNumberOfBooks(0);
+            bookDAO.updateTable(book);
+        }
+    }
 }

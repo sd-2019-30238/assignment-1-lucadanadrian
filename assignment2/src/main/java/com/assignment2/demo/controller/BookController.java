@@ -4,7 +4,6 @@ import com.assignment2.demo.model.Book;
 import com.assignment2.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -62,10 +61,24 @@ public class BookController {
         return modelAndView;
     }
 
-    @DeleteMapping("books/{id}")
+    @DeleteMapping("/books/{id}")
     public ModelAndView deleteBook(@PathVariable("id") long id) {
         ModelAndView modelAndView = new ModelAndView("redirect:/books");
         bookService.deleteBook((int) id);
+        return modelAndView;
+    }
+
+    @GetMapping("/booksU")
+    public ModelAndView displayBooksForUsers(){
+        ModelAndView modelAndView = new ModelAndView("booksSeenByUsers");
+        modelAndView.addObject("booksSeenByUsers",bookService.seeAllBooks());
+        return modelAndView;
+    }
+
+    @PostMapping("/booksU/{id}")
+    public ModelAndView orderBook(@PathVariable("id") int id){
+        ModelAndView modelAndView = new ModelAndView("redirect:/booksU");
+        bookService.orderBook(id);
         return modelAndView;
     }
 

@@ -26,7 +26,7 @@ public class UserService {
         userDAO.deleteFromTable(id);
     }
 
-    public void accpetUser(int id){
+    public void acceptUser(int id){
         User user = userDAO.selectById(id);
         user.setSubscribed("subbed");
         userDAO.updateTable(user);

@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Books By Author</title>
+    <title>All Books</title>
 </head>
 <body>
+
 <h2 align="center">Books</h2>
 <table align="center" border="1">
     <tr bgcolor="#ff7f50">
@@ -16,7 +17,7 @@
         <td>Price</td>
         <td>Number of books</td>
     </tr>
-    <tr th:each="book : ${booksByGenre}">
+    <tr th:each="book : ${booksSeenByUsers}">
         <td th:text="${book.id}"></td>
         <td th:text="${book.title}"></td>
         <td th:text="${book.author}"></td>
@@ -24,12 +25,14 @@
         <td th:text="${book.releaseDate}"></td>
         <td th:text="${book.price}"></td>
         <td th:text="${book.numberOfBooks}"></td>
+        <td>
+            <form action="#" th:action="@{/booksU/{id} (id=${book.id})}" th:method="post">
+            <input type="submit" value="Order">
+            </form>
+        </td>
     </tr>
 </table>
 
-<p align="center">
-    <button type="button"><a href="/books">Back</a></button>
-</p>
 
 </body>
 </html>

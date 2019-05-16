@@ -45,7 +45,7 @@ public class UserController {
     @PostMapping("/users/{id}")
     public ModelAndView acceptUser(@PathVariable("id") int id){
         ModelAndView modelAndView = new ModelAndView("redirect:/users");
-        userService.accpetUser(id);
+        userService.acceptUser(id);
         return modelAndView;
     }
 }
