@@ -18,17 +18,35 @@ public class UserService {
         userDAO.insertTable(user);
     }
 
-    public List<User> seeAllUsers(){
+    public List<User> seeAllUsers() {
         return userDAO.selectAll();
     }
 
-    public void deleteUser(int id){
+    public User selectUserByEmail(String email) {
+        return userDAO.selectByEmail(email);
+    }
+
+    public void deleteUser(int id) {
         userDAO.deleteFromTable(id);
     }
 
-    public void acceptUser(int id){
+    public void acceptUser(int id) {
         User user = userDAO.selectById(id);
         user.setSubscribed("subbed");
         userDAO.updateTable(user);
     }
+
+    public User logInUser(String email) {
+        User user = userDAO.selectByEmail(email);
+//        boolean ok = false;
+//        User user = userDAO.selectByEmail(email);
+//        for(User u: userDAO.selectAll()){
+//            if(u.getEmail().equals(email) && u.getPassword().equals(password)){
+//                ok =true;
+//                System.out.println("oke");
+//            }
+//        }
+        return user;
+    }
+
 }

@@ -8,23 +8,27 @@
 <body>
 <br>
 <br>
-    <table align="center">
-        <tr>
+<table align="center">
+    <tr>
+        <form action="#" th:action="@{/booksU}" method="get">
             <td>Email:</td>
-            <td><input type = "text" name="email" placeholder="Email"></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type="password" name="password" placeholder="Password"></td>
-        </tr>
-        <tr align="center">
-            <td></td>
+            <td><input type="text" name="email" placeholder="Email"></td>
             <td><input type="submit" value="Login"></td>
-        </tr>
-        <tr align="center">
-            <td></td>
-            <td><input type="submit" value="Sign Up"></td>
-        </tr>
-    </table>
+        </form>
+    </tr>
+    <tr>
+        <td>Password:</td>
+        <td><input type="password" name="password" placeholder="Password"></td>
+    </tr>
+    <tr align="center">
+        <td></td>
+    </tr>
+    <tr align="center">
+        <td></td>
+        <td>
+            <button type="button"><a href="/signUp">Sign Up</a></button>
+        </td>
+    </tr>
+</table>
 </body>
 </html>

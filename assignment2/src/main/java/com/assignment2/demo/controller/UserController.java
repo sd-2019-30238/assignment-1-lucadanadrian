@@ -16,7 +16,7 @@ public class UserController {
 
     @PostMapping("/signUp")
     public ModelAndView addUser(User user){
-        ModelAndView modelAndView = new ModelAndView("loginPage");
+        ModelAndView modelAndView = new ModelAndView("signupPage");
         userService.addUser(user);
         return modelAndView;
     }
@@ -46,6 +46,13 @@ public class UserController {
     public ModelAndView acceptUser(@PathVariable("id") int id){
         ModelAndView modelAndView = new ModelAndView("redirect:/users");
         userService.acceptUser(id);
+        return modelAndView;
+    }
+    @GetMapping("/login")
+    public ModelAndView showLogIn() {
+        ModelAndView modelAndView = new ModelAndView("loginPage");
+//        modelAndView.addObject("user", userService.logInUser(email));
+//        @RequestParam(required = false, value = "email") String email
         return modelAndView;
     }
 }

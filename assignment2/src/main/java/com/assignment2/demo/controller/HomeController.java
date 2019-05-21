@@ -6,9 +6,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
-    @GetMapping("/home")
-    public ModelAndView displayHomePage(){
-        ModelAndView modelAndViewv = new ModelAndView("mainMenu");
-        return modelAndViewv;
-    }
+//    @GetMapping("/login")
+//    public ModelAndView displayHomePage(){
+//        ModelAndView modelAndViewv = new ModelAndView("loginPage");
+//        return modelAndViewv;
+//    }
 }

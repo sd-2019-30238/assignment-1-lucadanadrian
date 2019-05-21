@@ -48,14 +48,14 @@ public class BookController {
     }
 
     @GetMapping("/books/genre")
-    public ModelAndView selectBooksByGenre(@RequestParam(value="genre") String genre){
+    public ModelAndView selectBooksByGenre(@RequestParam(value = "genre") String genre) {
         ModelAndView modelAndView = new ModelAndView("seeBooksByGenre");
-        modelAndView.addObject("booksByGenre",bookService.seeBooksByGenre(genre));
+        modelAndView.addObject("booksByGenre", bookService.seeBooksByGenre(genre));
         return modelAndView;
     }
 
     @GetMapping("/books/year")
-    public ModelAndView selectBooksByYear(@RequestParam(value = "year") int year){
+    public ModelAndView selectBooksByYear(@RequestParam(value = "year") int year) {
         ModelAndView modelAndView = new ModelAndView("seeBooksByYear");
         modelAndView.addObject("booksByYear", bookService.seeBooksByRelease(year));
         return modelAndView;
@@ -69,17 +69,23 @@ public class BookController {
     }
 
     @GetMapping("/booksU")
-    public ModelAndView displayBooksForUsers(){
+    public ModelAndView displayBooksForUsers() {
         ModelAndView modelAndView = new ModelAndView("booksSeenByUsers");
-        modelAndView.addObject("booksSeenByUsers",bookService.seeAllBooks());
+        modelAndView.addObject("booksSeenByUsers", bookService.seeAllBooks());
         return modelAndView;
     }
 
     @PostMapping("/booksU/{id}")
-    public ModelAndView orderBook(@PathVariable("id") int id){
+    public ModelAndView orderBook(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView("redirect:/booksU");
         bookService.orderBook(id);
         return modelAndView;
     }
 
+    @PutMapping("/booksU/return")
+    public ModelAndView returnBook(@RequestParam("orderId") int orderId) {//, @RequestParam("mail") String mail) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/booksU");
+        bookService.returnBook(orderId);
+        return modelAndView;
+    }
 }

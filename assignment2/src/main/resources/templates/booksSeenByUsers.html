@@ -27,12 +27,20 @@
         <td th:text="${book.numberOfBooks}"></td>
         <td>
             <form action="#" th:action="@{/booksU/{id} (id=${book.id})}" th:method="post">
-            <input type="submit" value="Order">
+                <input type="submit" value="Order">
             </form>
         </td>
     </tr>
 </table>
-
+<P align="center">
+    <button><a href="/login">Sign Out</a></button>
+</P>
+<form th:align="center" action="#" th:action="@{/booksU/return}" th:method="put">
+    <input type="hidden" name="_method" value="put">
+    <label th:for="orderId"></label>
+    <input th:type="number" th:name="orderId"  th:placeholder="orderId">
+    <button type="submit">Submit</button>
+</form>
 
 </body>
 </html>

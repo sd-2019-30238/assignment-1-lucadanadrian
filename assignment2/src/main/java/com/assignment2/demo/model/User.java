@@ -1,6 +1,9 @@
 package com.assignment2.demo.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -19,8 +22,11 @@ public class User {
     private String password;
     @Column(name = "user_months", nullable = false)
     private int subscriptionMonths;
-    @Column(name= "user_accept")
+    @Column(name = "user_accept")
     private String subscribed;
+
+    @OneToMany(mappedBy = "user")
+    private List<BookRequest> bookRequests = new ArrayList<>();
 
     public User() {
     }
@@ -32,6 +38,14 @@ public class User {
         this.password = password;
         this.subscriptionMonths = subscriptionMonths;
         this.subscribed = subscribed;
+    }
+
+    public List<BookRequest> getBookRequests() {
+        return bookRequests;
+    }
+
+    public void setBookRequests(List<BookRequest> bookRequests) {
+        this.bookRequests = bookRequests;
     }
 
     public void setSubscribed(String subscribed) {
@@ -88,6 +102,25 @@ public class User {
 
     public void setSubscriptionMonths(int subscriptionMonths) {
         this.subscriptionMonths = subscriptionMonths;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id &&
+                subscriptionMonths == user.subscriptionMonths &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(lastName, user.lastName) &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(subscribed, user.subscribed);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, email, lastName, firstName, password, subscriptionMonths, subscribed);
     }
 
     @Override
