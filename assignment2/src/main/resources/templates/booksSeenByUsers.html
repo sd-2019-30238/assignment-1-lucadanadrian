@@ -32,17 +32,20 @@
         </td>
     </tr>
 </table>
-<P align="center">
-<form action="#" th:action="@{/logout}" th:method="post">
-    <button th:type="submit">Logout</button>
-</form>
-</P>
-<form th:align="center" action="#" th:action="@{/booksU/return}" th:method="put">
-    <input type="hidden" name="_method" value="put">
-    <label th:for="orderId"></label>
-    <input th:type="number" th:name="orderId" th:placeholder="orderId">
-    <button type="submit">Submit</button>
-</form>
-
+<br>
+<table th:align="center">
+    <tr>
+        <td>
+            <button><a href="/bookOrders/currentUser">Your Orders</a></button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <form action="#" th:action="@{/logout}" th:method="post">
+                <button th:type="submit">Logout</button>
+            </form>
+        </td>
+    </tr>
+</table>
 </body>
 </html>
