@@ -5,7 +5,7 @@ import com.assignment2.demo.dao.BookRequestDAO;
 import com.assignment2.demo.dao.OrderDAO;
 import com.assignment2.demo.model.Book;
 import com.assignment2.demo.model.BookOrder;
-import com.assignment2.demo.model.BookRequest;
+import com.assignment2.demo.model.BookRequestObserver;
 import com.assignment2.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,13 +20,15 @@ public class BookService {
     private BookRequestDAO bookRequestDAO;
     private UserService userService;
     private OrderDAO orderDAO;
+    private ObserverService observerService;
 
     @Autowired
-    public BookService(BookDAO bookDAO, BookRequestDAO bookRequestDAO, UserService userService, OrderDAO orderDAO) {
+    public BookService(BookDAO bookDAO, BookRequestDAO bookRequestDAO, UserService userService, OrderDAO orderDAO, ObserverService observerService) {
         this.bookDAO = bookDAO;
         this.bookRequestDAO = bookRequestDAO;
         this.userService = userService;
         this.orderDAO = orderDAO;
+        this.observerService = observerService;
     }
 
     public void addBook(Book book) {
@@ -57,47 +59,28 @@ public class BookService {
         bookDAO.deleteFromTable(id);
     }
 
-    public void orderBook(int id) {
+
+    public void orderBook(int id, String email) {
         Book book = bookDAO.selectById(id);
-        User user = userService.selectUserByEmail("E");
+        User user = userService.selectUserByEmail(email);
         if (book.getNumberOfBooks() > 0) {
             book.setNumberOfBooks(book.getNumberOfBooks() - 1);
             bookDAO.updateTable(book);
             orderDAO.insertOrder(new BookOrder(0, user, book, 1));
         } else {
-            bookRequestDAO.insert(new BookRequest(user, book));
+            observerService.addObserver(book, user);
             book.setNumberOfBooks(0);
             bookDAO.updateTable(book);
         }
     }
 
-//    public void orderBook(int id, String email) {
-//        Book book = bookDAO.selectById(id);
-//        User user = userService.selectUserByEmail(email);
-//        if (book.getNumberOfBooks() > 0) {
-//            book.setNumberOfBooks(book.getNumberOfBooks() - 1);
-//            bookDAO.updateTable(book);
-//            orderDAO.insertOrder(new BookOrder(0, user, book, 1));
-//        } else {
-//            bookRequestDAO.insert(new BookRequest(user, book));
-//            book.setNumberOfBooks(0);
-//            bookDAO.updateTable(book);
-//        }
-//    }
-
     public void returnBook(int bookOrderId) {
         BookOrder bookOrder = orderDAO.selectByOrderId(bookOrderId);
         Book book = bookDAO.selectById(bookOrder.getBook().getId());
         book.setNumberOfBooks(book.getNumberOfBooks() + 1);
-        User user = null;
-        if (!book.getBookRequests().isEmpty()) {
-            for (BookRequest bookRequest : book.getBookRequests()) {
-                user = bookRequest.getUser();
-                //TODO notify user
-                System.out.println("notify " + user.getEmail());
-            }
-        }
+        observerService.notifyObservers(book);
         bookDAO.updateTable(book);
         orderDAO.deleteOrder(bookOrderId);
     }
+
 }

@@ -25,7 +25,7 @@ public class Book {
     private int numberOfBooks;
 
     @OneToMany(mappedBy = "book")
-    private List<BookRequest> bookRequests = new ArrayList<>();
+    private List<BookRequestObserver> bookRequestObservers = new ArrayList<>();
 
     public Book() {
     }
@@ -49,12 +49,12 @@ public class Book {
         this.numberOfBooks = numberOfBooks;
     }
 
-    public List<BookRequest> getBookRequests() {
-        return bookRequests;
+    public List<BookRequestObserver> getBookRequestObservers() {
+        return bookRequestObservers;
     }
 
-    public void setBookRequests(List<BookRequest> bookRequests) {
-        this.bookRequests = bookRequests;
+    public void setBookRequestObservers(List<BookRequestObserver> bookRequestObservers) {
+        this.bookRequestObservers = bookRequestObservers;
     }
 
     public int getId() {

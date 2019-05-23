@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>See orders</title>
+</head>
+<body>
+<h2 align="center">Orders</h2>
+<table align="center" border="1">
+    <tr bgcolor="#ff7f50">
+        <td>Id</td>
+        <td>Email</td>
+        <td>Title</td>
+        <td>Price</td>
+    </tr>
+    <tr th:each="book : ${bookOrders}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.user.email}"></td>
+        <td th:text="${book.book.title}"></td>
+        <td th:text="${book.book.price}"></td>
+        <td>
+            <form action="#" th:action="@{/booksU/return}" th:method="put">
+                <input type="hidden" name="_method" value="put">
+                <input type="hidden" th:name="orderId" th:value="${book.id}">
+                <button th:type="submit">Return</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

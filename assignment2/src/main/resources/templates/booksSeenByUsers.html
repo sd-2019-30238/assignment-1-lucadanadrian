@@ -33,12 +33,14 @@
     </tr>
 </table>
 <P align="center">
-    <button><a href="/login">Sign Out</a></button>
+<form action="#" th:action="@{/logout}" th:method="post">
+    <button th:type="submit">Logout</button>
+</form>
 </P>
 <form th:align="center" action="#" th:action="@{/booksU/return}" th:method="put">
     <input type="hidden" name="_method" value="put">
     <label th:for="orderId"></label>
-    <input th:type="number" th:name="orderId"  th:placeholder="orderId">
+    <input th:type="number" th:name="orderId" th:placeholder="orderId">
     <button type="submit">Submit</button>
 </form>
 

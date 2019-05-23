@@ -26,7 +26,7 @@ public class User {
     private String subscribed;
 
     @OneToMany(mappedBy = "user")
-    private List<BookRequest> bookRequests = new ArrayList<>();
+    private List<BookRequestObserver> bookRequestObservers = new ArrayList<>();
 
     public User() {
     }
@@ -40,12 +40,12 @@ public class User {
         this.subscribed = subscribed;
     }
 
-    public List<BookRequest> getBookRequests() {
-        return bookRequests;
+    public List<BookRequestObserver> getBookRequestObservers() {
+        return bookRequestObservers;
     }
 
-    public void setBookRequests(List<BookRequest> bookRequests) {
-        this.bookRequests = bookRequests;
+    public void setBookRequestObservers(List<BookRequestObserver> bookRequestObservers) {
+        this.bookRequestObservers = bookRequestObservers;
     }
 
     public void setSubscribed(String subscribed) {

@@ -3,6 +3,7 @@ package com.assignment2.demo.controller;
 import com.assignment2.demo.model.Book;
 import com.assignment2.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -75,17 +76,5 @@ public class BookController {
         return modelAndView;
     }
 
-    @PostMapping("/booksU/{id}")
-    public ModelAndView orderBook(@PathVariable("id") int id) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/booksU");
-        bookService.orderBook(id);
-        return modelAndView;
-    }
 
-    @PutMapping("/booksU/return")
-    public ModelAndView returnBook(@RequestParam("orderId") int orderId) {//, @RequestParam("mail") String mail) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/booksU");
-        bookService.returnBook(orderId);
-        return modelAndView;
-    }
 }

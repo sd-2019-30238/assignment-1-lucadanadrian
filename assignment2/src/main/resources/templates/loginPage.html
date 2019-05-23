@@ -10,15 +10,15 @@
 <br>
 <table align="center">
     <tr>
-        <form action="#" th:action="@{/booksU}" method="get">
+        <form action="#" th:action="@{/checkCredentials}" th:method="post">
             <td>Email:</td>
-            <td><input type="text" name="email" placeholder="Email"></td>
+            <td><input type="text" name="username" placeholder="Email"></td>
+            <td>Password:</td>
+            <td><input type="password" name="password" placeholder="Password"></td>
             <td><input type="submit" value="Login"></td>
         </form>
     </tr>
     <tr>
-        <td>Password:</td>
-        <td><input type="password" name="password" placeholder="Password"></td>
     </tr>
     <tr align="center">
         <td></td>

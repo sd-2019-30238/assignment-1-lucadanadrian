@@ -3,6 +3,7 @@ package com.assignment2.demo.service;
 import com.assignment2.demo.dao.UserDAO;
 import com.assignment2.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -13,8 +14,11 @@ import java.util.List;
 public class UserService {
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public void addUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.insertTable(user);
     }
 
@@ -34,19 +38,6 @@ public class UserService {
         User user = userDAO.selectById(id);
         user.setSubscribed("subbed");
         userDAO.updateTable(user);
-    }
-
-    public User logInUser(String email) {
-        User user = userDAO.selectByEmail(email);
-//        boolean ok = false;
-//        User user = userDAO.selectByEmail(email);
-//        for(User u: userDAO.selectAll()){
-//            if(u.getEmail().equals(email) && u.getPassword().equals(password)){
-//                ok =true;
-//                System.out.println("oke");
-//            }
-//        }
-        return user;
     }
 
 }
