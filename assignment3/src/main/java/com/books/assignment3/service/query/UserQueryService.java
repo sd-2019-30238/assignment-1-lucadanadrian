@@ -16,10 +16,10 @@ public class UserQueryService {
         this.userDAO = userDAO;
     }
 
-    public List<UserQueryDTO> seeAllUsers(){
+    public List<UserQueryDTO> seeAllUsers() {
         List<UserQueryDTO> usersDTO = new ArrayList<>();
         List<User> users = userDAO.selectAll();
-        for(User user:users){
+        for (User user : users) {
             UserQueryDTO aux = new UserQueryDTO();
             aux.setEmail(user.getEmail());
             aux.setFirstName(user.getFirstName());
@@ -32,8 +32,8 @@ public class UserQueryService {
         return usersDTO;
     }
 
-    public UserQueryDTO selectUserByEmail(String email){
+    public UserQueryDTO selectUserByEmail(String email) {
         User user = userDAO.selectByEmail(email);
-       return new UserQueryDTO(user.getId(),user.getEmail(),user.getLastName(),user.getFirstName(),user.getPassword(),user.getSubscriptionMonths(),user.getSubscribed());
+        return new UserQueryDTO(user.getId(), user.getEmail(), user.getLastName(), user.getFirstName(), user.getPassword(), user.getSubscriptionMonths(), user.getSubscribed());
     }
 }

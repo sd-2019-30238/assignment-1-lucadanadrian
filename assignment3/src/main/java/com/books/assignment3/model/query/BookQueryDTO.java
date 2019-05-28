@@ -6,18 +6,28 @@ public class BookQueryDTO {
     private String author;
     private String genre;
     private int releaseDate;
+    private int price;
     private int numberOfBooks;
 
     public BookQueryDTO() {
 
     }
 
-    public BookQueryDTO(int id, String title, String author, String genre, int releaseDate, int numberOfBooks) {
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public BookQueryDTO(int id, String title, String author, String genre, int releaseDate, int price, int numberOfBooks) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.genre = genre;
         this.releaseDate = releaseDate;
+        this.price = price;
         this.numberOfBooks = numberOfBooks;
     }
 
