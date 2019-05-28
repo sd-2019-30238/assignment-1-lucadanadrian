@@ -1,6 +1,6 @@
 package com.books.assignment3.model.query;
 
-public class UserQuery {
+public class UserQueryDTO {
     private int id;
     private String email;
     private String lastName;
@@ -9,11 +9,11 @@ public class UserQuery {
     private int subscriptionMonth;
     private String subscribed;
 
-    public UserQuery() {
+    public UserQueryDTO() {
 
     }
 
-    public UserQuery(int id, String email, String lastName, String firstName, String password, int subscriptionMonth, String subscribed) {
+    public UserQueryDTO(int id, String email, String lastName, String firstName, String password, int subscriptionMonth, String subscribed) {
         this.id = id;
         this.email = email;
         this.lastName = lastName;

@@ -1,6 +1,6 @@
 package com.books.assignment3.model.command;
 
-public class UserSignUpCommand {
+public class UserCommandDTO {
     private String email;
     private String lastName;
     private String firstName;
@@ -8,11 +8,11 @@ public class UserSignUpCommand {
     private int subscriptionMonth;
     private String subscribed;
 
-    public UserSignUpCommand() {
+    public UserCommandDTO() {
 
     }
 
-    public UserSignUpCommand(String email, String lastName, String firstName, String password, int subscriptionMonth, String subscribed) {
+    public UserCommandDTO(String email, String lastName, String firstName, String password, int subscriptionMonth, String subscribed) {
         this.email = email;
         this.lastName = lastName;
         this.firstName = firstName;

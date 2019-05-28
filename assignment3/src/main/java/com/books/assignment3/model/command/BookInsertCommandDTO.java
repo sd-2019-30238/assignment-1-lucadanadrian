@@ -1,17 +1,17 @@
 package com.books.assignment3.model.command;
 
-public class BookInsertCommand {
+public class BookInsertCommandDTO {
     private String title;
     private String author;
     private String genre;
     private int releaseDate;
     private int numberOfBooks;
 
-    public BookInsertCommand() {
+    public BookInsertCommandDTO() {
 
     }
 
-    public BookInsertCommand(String title, String author, String genre, int releaseDate, int numberOfBooks) {
+    public BookInsertCommandDTO(String title, String author, String genre, int releaseDate, int numberOfBooks) {
         this.title = title;
         this.author = author;
         this.genre = genre;

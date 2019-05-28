@@ -1,6 +1,6 @@
 package com.books.assignment3.model.query;
 
-public class BookQuery {
+public class BookQueryDTO {
     private int id;
     private String title;
     private String author;
@@ -8,11 +8,11 @@ public class BookQuery {
     private int releaseDate;
     private int numberOfBooks;
 
-    public BookQuery() {
+    public BookQueryDTO() {
 
     }
 
-    public BookQuery(int id, String title, String author, String genre, int releaseDate, int numberOfBooks) {
+    public BookQueryDTO(int id, String title, String author, String genre, int releaseDate, int numberOfBooks) {
         this.id = id;
         this.title = title;
         this.author = author;
