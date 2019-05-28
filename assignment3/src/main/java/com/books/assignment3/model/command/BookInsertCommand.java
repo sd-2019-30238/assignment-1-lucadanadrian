@@ -1,32 +1,22 @@
-package com.books.assignment3.model.query;
+package com.books.assignment3.model.command;
 
-public class BookQuery {
-    private int id;
+public class BookInsertCommand {
     private String title;
     private String author;
     private String genre;
     private int releaseDate;
     private int numberOfBooks;
 
-    public BookQuery() {
+    public BookInsertCommand() {
 
     }
 
-    public BookQuery(int id, String title, String author, String genre, int releaseDate, int numberOfBooks) {
-        this.id = id;
+    public BookInsertCommand(String title, String author, String genre, int releaseDate, int numberOfBooks) {
         this.title = title;
         this.author = author;
         this.genre = genre;
         this.releaseDate = releaseDate;
         this.numberOfBooks = numberOfBooks;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTitle() {

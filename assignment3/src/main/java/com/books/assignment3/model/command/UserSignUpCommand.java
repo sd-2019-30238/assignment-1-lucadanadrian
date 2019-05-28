@@ -1,7 +1,6 @@
-package com.books.assignment3.model.query;
+package com.books.assignment3.model.command;
 
-public class UserQuery {
-    private int id;
+public class UserSignUpCommand {
     private String email;
     private String lastName;
     private String firstName;
@@ -9,34 +8,17 @@ public class UserQuery {
     private int subscriptionMonth;
     private String subscribed;
 
-    public UserQuery() {
+    public UserSignUpCommand() {
 
     }
 
-    public UserQuery(int id, String email, String lastName, String firstName, String password, int subscriptionMonth, String subscribed) {
-        this.id = id;
+    public UserSignUpCommand(String email, String lastName, String firstName, String password, int subscriptionMonth, String subscribed) {
         this.email = email;
         this.lastName = lastName;
         this.firstName = firstName;
         this.password = password;
         this.subscriptionMonth = subscriptionMonth;
         this.subscribed = subscribed;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getEmail() {
@@ -63,6 +45,14 @@ public class UserQuery {
         this.firstName = firstName;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public int getSubscriptionMonth() {
         return subscriptionMonth;
     }
@@ -79,3 +69,5 @@ public class UserQuery {
         this.subscribed = subscribed;
     }
 }
+
+

@@ -1,26 +1,19 @@
-package com.books.assignment3.model.query;
+package com.books.assignment3.model.command;
 
-public class BookOrderQuery {
-    private int id;
+import com.books.assignment3.model.query.BookQuery;
+import com.books.assignment3.model.query.UserQuery;
+
+public class BookOrderCommand {
     private UserQuery user;
     private BookQuery book;
 
-    public BookOrderQuery() {
+    public BookOrderCommand(){
 
     }
 
-    public BookOrderQuery(int id, UserQuery user, BookQuery book) {
-        this.id = id;
+    public BookOrderCommand(UserQuery user, BookQuery book) {
         this.user = user;
         this.book = book;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public UserQuery getUser() {
