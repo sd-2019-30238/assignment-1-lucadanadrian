@@ -4,10 +4,13 @@ import com.books.assignment3.dao.UserDAO;
 import com.books.assignment3.model.database.User;
 import com.books.assignment3.model.query.UserQueryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-
+@Transactional
+@Service
 public class UserQueryService {
     @Autowired
     private UserDAO userDAO;

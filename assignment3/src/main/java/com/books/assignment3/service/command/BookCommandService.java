@@ -9,13 +9,26 @@ import com.books.assignment3.model.database.BookOrder;
 import com.books.assignment3.model.database.User;
 import com.books.assignment3.model.query.UserQueryDTO;
 import com.books.assignment3.service.query.UserQueryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
+@Transactional
+@Service
 public class BookCommandService {
     private BookDAO bookDAO;
     private UserQueryService userQueryService;
     private OrderDAO orderDAO;
 
-    public void addBook(BookCommandDTO bookCommandDTO){
+    @Autowired
+    public BookCommandService(BookDAO bookDAO, UserQueryService userQueryService, OrderDAO orderDAO) {
+        this.bookDAO = bookDAO;
+        this.userQueryService = userQueryService;
+        this.orderDAO = orderDAO;
+    }
+
+    public void addBook(BookCommandDTO bookCommandDTO) {
         Book book = new Book();
         book.setTitle(bookCommandDTO.getTitle());
         book.setAuthor(bookCommandDTO.getAuthor());
@@ -26,9 +39,10 @@ public class BookCommandService {
         bookDAO.insertTable(book);
     }
 
-    public void deleteBook(int id){
+    public void deleteBook(int id) {
         bookDAO.deleteFromTable(id);
     }
+
     public void orderBook(int id, String email) {
         Book book = bookDAO.selectById(id);
         UserQueryDTO userQueryDTO = userQueryService.selectUserByEmail(email);
@@ -43,7 +57,7 @@ public class BookCommandService {
         if (book.getNumberOfBooks() > 0) {
             book.setNumberOfBooks(book.getNumberOfBooks() - 1);
             bookDAO.updateTable(book);
-            orderDAO.insertOrder(new BookOrder(0,user, book,0));
+            orderDAO.insertOrder(new BookOrder(0, user, book, 0));
         } else {
 //            observerService.addObserver(book, user);
             book.setNumberOfBooks(0);

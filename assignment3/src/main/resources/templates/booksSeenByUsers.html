@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Books</title>
+</head>
+<body>
+
+<h2 align="center">Books</h2>
+<table align="center" border="1">
+    <tr bgcolor="#ff7f50">
+        <td>Id</td>
+        <td>Title</td>
+        <td>Author</td>
+        <td>Genre</td>
+        <td>Release Date</td>
+        <td>Price</td>
+        <td>Number of books</td>
+    </tr>
+    <tr th:each="book : ${booksSeenByUsers}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.genre}"></td>
+        <td th:text="${book.releaseDate}"></td>
+        <td th:text="${book.price}"></td>
+        <td th:text="${book.numberOfBooks}"></td>
+        <td>
+            <form action="#" th:action="@{/booksU/{id} (id=${book.id})}" th:method="post">
+                <input type="submit" value="Order">
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<table th:align="center">
+    <tr>
+        <td>
+            <button><a href="/bookOrders/currentUser">Your Orders</a></button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <form action="#" th:action="@{/logout}" th:method="post">
+                <button th:type="submit">Logout</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

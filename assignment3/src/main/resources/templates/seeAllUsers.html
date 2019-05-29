@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+</head>
+<body>
+<h2 align="center">All Users</h2>
+
+<table align="center" border="1">
+    <tr bgcolor="#ff7f50">
+        <td >User ID</td>
+        <td>User Email</td>
+        <td>Last Name</td>
+        <td>First Name</td>
+        <td>Subscription:</td>
+        <td>Accepted:</td>>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.getId()}"></td>
+        <td th:text="${user.getEmail()}"></td>
+        <td th:text="${user.getLastName()}"></td>
+        <td th:text="${user.getFirstName()}"></td>
+        <td th:text="${user.getSubscriptionMonth()}"></td>
+        <td th:text="${user.getSubscribed()}"></td>
+        <td>
+            <form action="#" th:action="@{/users/{id} (id=${user.id})}" th:method="delete">
+                <input type="hidden" name="_method" value="delete"/>
+                <input type="submit" value="Delete">
+            </form>
+        </td>
+        <td>
+            <form action="#" th:action="@{/users/{id} (id=${user.id})}" th:method="post">
+                <input type="submit" value="Accept">
+            </form>
+        </td>
+
+    </tr>
+
+</table>
+
+<br>
+
+<p align="center">
+    <button type="button"><a href="/books">Library</a></button>
+</p>
+<p align="center">
+    <button type="button"><a href="/addBook">Insert Book</a></button>
+</p>
+</body>
+</html>

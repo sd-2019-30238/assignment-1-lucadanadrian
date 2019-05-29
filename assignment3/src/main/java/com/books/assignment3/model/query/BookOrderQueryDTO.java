@@ -1,15 +1,18 @@
 package com.books.assignment3.model.query;
 
+import com.books.assignment3.model.database.Book;
+import com.books.assignment3.model.database.User;
+
 public class BookOrderQueryDTO {
     private int id;
-    private UserQueryDTO user;
-    private BookQueryDTO book;
+    private User user;
+    private Book book;
 
     public BookOrderQueryDTO() {
 
     }
 
-    public BookOrderQueryDTO(int id, UserQueryDTO user, BookQueryDTO book) {
+    public BookOrderQueryDTO(int id, User user, Book book) {
         this.id = id;
         this.user = user;
         this.book = book;
@@ -23,19 +26,19 @@ public class BookOrderQueryDTO {
         this.id = id;
     }
 
-    public UserQueryDTO getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(UserQueryDTO user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    public BookQueryDTO getBook() {
+    public Book getBook() {
         return book;
     }
 
-    public void setBook(BookQueryDTO book) {
+    public void setBook(Book book) {
         this.book = book;
     }
 }

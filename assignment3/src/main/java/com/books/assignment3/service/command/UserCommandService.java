@@ -4,7 +4,12 @@ import com.books.assignment3.dao.UserDAO;
 import com.books.assignment3.model.command.UserCommandDTO;
 import com.books.assignment3.model.database.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
+@Transactional
+@Service
 public class UserCommandService {
     @Autowired
     private UserDAO userDAO;
