@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+
 @Transactional
 @Service
 public class UserQueryService {
@@ -35,8 +36,10 @@ public class UserQueryService {
         return usersDTO;
     }
 
-    public UserQueryDTO selectUserByEmail(String email) {
-        User user = userDAO.selectByEmail(email);
-        return new UserQueryDTO(user.getId(), user.getEmail(), user.getLastName(), user.getFirstName(), user.getPassword(), user.getSubscriptionMonths(), user.getSubscribed());
+    public User selectUserByEmail(String email) {
+//        User user = userDAO.selectByEmail(email);
+//        System.out.println(email);
+//        return new UserQueryDTO(user.getId(), user.getEmail(), user.getLastName(), user.getFirstName(), user.getPassword(), user.getSubscriptionMonths(), user.getSubscribed());
+        return userDAO.selectByEmail(email);
     }
 }

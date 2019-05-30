@@ -45,14 +45,14 @@ public class BookCommandService {
 
     public void orderBook(int id, String email) {
         Book book = bookDAO.selectById(id);
-        UserQueryDTO userQueryDTO = userQueryService.selectUserByEmail(email);
+        User userQueryDTO = userQueryService.selectUserByEmail(email);
         User user = new User();
         user.setEmail(userQueryDTO.getEmail());
         user.setFirstName(userQueryDTO.getFirstName());
         user.setLastName(userQueryDTO.getLastName());
         user.setPassword(userQueryDTO.getPassword());
         user.setSubscribed(userQueryDTO.getSubscribed());
-        user.setSubscriptionMonths(userQueryDTO.getSubscriptionMonth());
+        user.setSubscriptionMonths(userQueryDTO.getSubscriptionMonths());
 
         if (book.getNumberOfBooks() > 0) {
             book.setNumberOfBooks(book.getNumberOfBooks() - 1);

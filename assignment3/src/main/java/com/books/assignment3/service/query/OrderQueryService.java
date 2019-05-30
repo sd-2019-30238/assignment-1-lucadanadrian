@@ -5,10 +5,14 @@ import com.books.assignment3.model.database.BookOrder;
 import com.books.assignment3.model.database.User;
 import com.books.assignment3.model.query.BookOrderQueryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
+@Transactional
 public class OrderQueryService {
     private OrderDAO orderDAO;
 
