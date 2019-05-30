@@ -12,6 +12,11 @@ public class BookRequestHandler implements RequestHandler {
     @Autowired
     private BookCommandService bookCommandService;
 
+//    @Autowired
+//    public BookRequestHandler(BookCommandService bookCommandService){
+//        this.bookCommandService=bookCommandService;
+//    }
+
     @Override
     public void handleRequest(Request request) {
         BookCommandDTO bookCommandDTO = new BookCommandDTO();

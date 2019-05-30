@@ -16,7 +16,7 @@ public class LogInService implements UserDetailsService {
     private UserQueryService userQueryService;
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        User userQueryDTO = userQueryService.selectUserByEmail(s);
+        UserQueryDTO userQueryDTO = userQueryService.selectUserByEmail(s);
         if (userQueryDTO == null) {
             return null;
         }

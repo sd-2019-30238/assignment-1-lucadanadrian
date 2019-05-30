@@ -25,6 +25,7 @@ public class UserQueryService {
         List<User> users = userDAO.selectAll();
         for (User user : users) {
             UserQueryDTO aux = new UserQueryDTO();
+            aux.setId(user.getId());
             aux.setEmail(user.getEmail());
             aux.setFirstName(user.getFirstName());
             aux.setLastName(user.getLastName());
@@ -36,10 +37,8 @@ public class UserQueryService {
         return usersDTO;
     }
 
-    public User selectUserByEmail(String email) {
-//        User user = userDAO.selectByEmail(email);
-//        System.out.println(email);
-//        return new UserQueryDTO(user.getId(), user.getEmail(), user.getLastName(), user.getFirstName(), user.getPassword(), user.getSubscriptionMonths(), user.getSubscribed());
-        return userDAO.selectByEmail(email);
+    public UserQueryDTO selectUserByEmail(String email) {
+        User user = userDAO.selectByEmail(email);
+        return new UserQueryDTO(user.getId(), user.getEmail(), user.getLastName(), user.getFirstName(), user.getPassword(), user.getSubscriptionMonths(), user.getSubscribed());
     }
 }

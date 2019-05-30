@@ -1,14 +1,15 @@
 package com.books.assignment3.model.database;
 
+import com.books.assignment3.model.query.UserQueryDTO;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
 public class AppUserDetails implements UserDetails {
-    private User user;
+    private UserQueryDTO user;
 
-    public AppUserDetails(User user) {
+    public AppUserDetails(UserQueryDTO user) {
         this.user = user;
     }
 
