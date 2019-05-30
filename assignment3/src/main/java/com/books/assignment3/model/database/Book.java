@@ -1,12 +1,14 @@
 package com.books.assignment3.model.database;
 
+import com.books.assignment3.decorator.BookDecoratorInterface;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table
-public class Book {
+public class Book implements BookDecoratorInterface {
     @Id
     @Column(name = "book_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
